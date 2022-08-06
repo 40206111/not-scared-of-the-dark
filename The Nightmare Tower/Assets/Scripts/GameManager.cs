@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
 
     public TransitionController TransController;
 
+    [SerializeField]
+    TextBoxFiller TextFiller;
+
     public void QueueTransition(eTransitionEnums transitionEnum, float fadeTime = 1)
     {
         if (TransController != null)
@@ -47,6 +50,11 @@ public class GameManager : MonoBehaviour
             var ran = Random.Range(0, (int)eTransitionEnums.COUNT);
 
             QueueTransition((eTransitionEnums)ran);
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            TextFiller.PrintText("Hello Friends");
         }
     }
 }
