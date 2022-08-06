@@ -1,10 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [HideInInspector]
     public static GameManager Instance;
 
     public TransitionController TransController;
@@ -41,20 +41,63 @@ public class GameManager : MonoBehaviour
         {
             TransController = new TransitionController(renderTrans);
         }
+
+    }
+    private void Start()
+    {
+        if (DebugMenu.Instance != null)
+        {
+            DebugMenu.Instance.ConsoleCommand += GetDebugCommand;
+        }
     }
 
-    private void Update()
+    private void OnDestroy()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (DebugMenu.Instance != null)
         {
-            var ran = Random.Range(0, (int)eTransitionEnums.COUNT);
+            DebugMenu.Instance.ConsoleCommand -= GetDebugCommand;
+        }
+    }
 
-            QueueTransition((eTransitionEnums)ran);
+    public void GetDebugCommand(string[] commands)
+    {
+        string keyword = commands[0].ToLower();
+
+        if (keyword == "text")
+        {
+            if (commands.Length == 1)
+            {
+                TextFiller.PrintText("This is a test");
+                return;
+            }
+            string print = "";
+            for (int i = 1; i < commands.Length; i++)
+            {
+                if (i != 1)
+                {
+                    print += " ";
+                }
+
+                print += commands[i];
+            }
+            TextFiller.PrintText(print);
+            return;
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
+        if (keyword == "trans")
         {
-            TextFiller.PrintText("Hello Friends");
+            if (commands.Length == 1)
+            {
+                var ran = UnityEngine.Random.Range(0, (int)eTransitionEnums.COUNT);
+                QueueTransition((eTransitionEnums)ran);
+                return;
+            }
+
+            if (Enum.TryParse("Active", out eTransitionEnums trans))
+            {
+                QueueTransition(trans);
+            }
+            return;
         }
     }
 }
