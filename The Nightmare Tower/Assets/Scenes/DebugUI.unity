@@ -272,6 +272,10 @@ PrefabInstance:
       propertyPath: m_FontData.m_FontSize
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 532911005484750566, guid: 0726d9cc40eda4842a191774007f0d2f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 532911005484750567, guid: 0726d9cc40eda4842a191774007f0d2f, type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
@@ -298,7 +302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 532911005484750567, guid: 0726d9cc40eda4842a191774007f0d2f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 67.86968
       objectReference: {fileID: 0}
     - target: {fileID: 532911005484750567, guid: 0726d9cc40eda4842a191774007f0d2f, type: 3}
       propertyPath: m_AnchoredPosition.x

@@ -9,9 +9,6 @@ public class GameManager : MonoBehaviour
 
     public TransitionController TransController;
 
-    [SerializeField]
-    TextBoxFiller TextFiller;
-
     public void QueueTransition(eTransitionEnums transitionEnum, float fadeTime = 1)
     {
         if (TransController != null)
@@ -67,7 +64,7 @@ public class GameManager : MonoBehaviour
         {
             if (commands.Length == 1)
             {
-                TextFiller.PrintText("This is a test");
+                DialogueBoxControl.Instance.QueueDialogue("This is a test", closeAfterText: true);
                 return;
             }
             string print = "";
@@ -80,7 +77,7 @@ public class GameManager : MonoBehaviour
 
                 print += commands[i];
             }
-            TextFiller.PrintText(print);
+            DialogueBoxControl.Instance.QueueDialogue(print, closeAfterText: true);
             return;
         }
 
