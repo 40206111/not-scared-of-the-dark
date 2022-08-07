@@ -41,6 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Monsties
+    uniqueID: 4206946227
+    locked: 0
   - name: Dialogue Text
     uniqueID: 2115300059
+    locked: 0
+  - name: UI
+    uniqueID: 3194411903
     locked: 0
